@@ -25,8 +25,21 @@ class Index extends React.Component {
     firebase.auth().onAuthStateChanged(user => {
       if(user){
         this.setState({ user: user })
+        user.getIdToken()
+          .then((token) => {
+            fetch('/api/login',{
+              method: 'POST',
+              headers: new Headers({ 'Content-Type': 'application/json' }),
+              credentials: 'same-origin',
+              body: JSON.stringify({ token })
+            })
+          })
       }else{
         this.setState({ user: null })
+        fetch('/api/logout',{
+          method: 'POST',
+          credentials: 'same-origin'
+        })
       }
     })
   }
