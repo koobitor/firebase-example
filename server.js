@@ -10,9 +10,10 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+const client = require('./credentials/client')
 const firebase = admin.initializeApp({
   credential: admin.credential.cert(require('./credentials/server')),
-  databaseURL: ''
+  databaseURL: client.databaseURL
 }, 'server')
 
 app.prepare()
