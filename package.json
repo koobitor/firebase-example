@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "express-session": "^1.15.6",
     "firebase": "^5.3.0",
     "firebase-admin": "^5.13.0",
@@ -13,5 +14,11 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "session-file-store": "^1.2.0"
+  },
+  "scripts": {
+    "dev": "nodemon -w pages -w server.js server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }
